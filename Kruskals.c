@@ -15,9 +15,6 @@ void main() {
 
     printf("Keval Shah 60009220061\n");
 
-    len_sel = 0;
-    len_cut = 0;
-
     // Find the nearest neighbor for each vertex 
     for (i = 0; i < 5; i++) {
         int mini = 0;
