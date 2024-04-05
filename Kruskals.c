@@ -1,8 +1,6 @@
 #include <stdio.h>
 void main() {
     int i, j, k;
-    int selected[100];
-    int cut[100];
     int val[100];
     int vali[100];
     int valj[100];
@@ -12,7 +10,7 @@ void main() {
           {2, 0, 0, 6, 5},
           {0, 3, 6, 0, 4},
           {0, 0, 5, 4, 0}};
-    int len_sel, len_cut,leave;
+    int leave;
     int cost = 0;
 
     printf("Keval Shah 60009220061\n");
