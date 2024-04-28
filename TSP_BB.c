@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <limits.h>
+
 #define N 5
-#define INF 1000
+#define INF INT_MAX
 
 int distance[N][N] = {
-    {INF, 7, 3, 12, 8},
-    {3, INF, 6, 14, 9},
-    {5, 8, INF, 6, 18},
-    {9, 3, 5, INF, 11},
-    {18, 14, 9, 8, INF}
+    {INF, 20, 30, 10, 11},
+    {15, INF, 16, 4, 2},
+    {3, 5, INF, 4, 2},
+    {19, 6, 18, INF, 3},
+    {16, 4, 7, 16, INF}
 };
 
 int visited[N];
