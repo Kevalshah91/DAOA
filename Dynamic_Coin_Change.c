@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-int main() {
+void main() {
     int i, j;
     int d[10] = {1, 4, 6};
     int n = 3; // number of coins
     int N = 8; // sum
     int dp[10][10];
-    int sol[10] = {0}; 
-    int count = 0;
     
     printf("Keval Shah 60009220061 \n");
     printf("Table : \n");
@@ -56,6 +54,4 @@ int main() {
             j = j-d[i-1];
         }
     }
-
-    return 0;
 }
