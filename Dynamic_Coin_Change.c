@@ -52,8 +52,6 @@ int main() {
             i--;
         } 
         else {
-            sol[count] = d[i-1];
-            count++;
             printf("%d ", d[i-1]);
             j = j-d[i-1];
         }
