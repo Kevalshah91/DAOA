@@ -43,7 +43,7 @@ int main() {
         printf("\n");
     }
 
-    // Back tracing
+    // tracing solution
     i = n;
     j = N;
     printf("\nCoins Used : ");
