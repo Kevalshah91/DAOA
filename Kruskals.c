@@ -1,52 +1,53 @@
-#include <stdio.h>
-void main() {
-    int i, j, k;
-    int val[100];
-    int vali[100];
-    int valj[100];
-    int a[5][5] = {
-          {0, 1, 2, 0, 0},
-          {1, 0, 0, 3, 0},
-          {2, 0, 0, 6, 5},
-          {0, 3, 6, 0, 4},
-          {0, 0, 5, 4, 0}};
-    int leave;
-    int cost = 0;
+#include<stdio.h>
+#include<limits.h>
+#define inf 1000
+#define V 5
 
-    printf("Keval Shah 60009220061\n");
+int parent[V];
 
-    // Find the nearest neighbor for each vertex 
-    for (i = 0; i < 5; i++) {
-        int mini = 0;
-        int minj = 0;
-        int min = 100;
+int find(int i){
+    while(parent[i] != i){
+        i = parent[i];
+    }
+    return i;
+}
 
-        for (j = 0; j < 5; j++) {
-            if (a[i][j] < min && a[i][j] != 0) {
-                min = a[i][j];
-                mini = i;
-                minj = j;
+void union_set(int i,int j){
+    int a = find(i);
+    int b = find(j);
+    parent[a] = b;
+}
+
+void main(){
+    int i,j;
+    int graph[V][V] = {
+        {inf, 1, 7, inf, inf},
+	    {1, inf, 5, 4, 3},
+	    {7, 5, inf, inf, 6},
+	    {inf, 4, inf, inf, 2},
+	    {inf, 3, 6, 2, inf}};
+    int mincost=0;
+    for(i=0;i<V;i++){
+        parent[i] = i;
+    }
+    int edge_count = 0;
+    while(edge_count < V-1){
+        int min = inf;
+        int a = -1;
+        int b = -1;
+        for(i=0;i<V;i++){
+            for(j=0;j<V;j++){
+                if(find(i) != find(j) && graph[i][j] < min){
+                    min = graph[i][j];
+                    a=i;
+                    b=j;
+                }
             }
         }
-
-        val[i] = min;
-        vali[i] = mini;
-        valj[i] = minj;
+        union_set(a,b);
+        printf("\nEdge %d :  (%d : %d) , cost : %d \n ",edge_count , a, b, min);
+        edge_count += 1;
+        mincost += min;  
     }
-
-    // Avoid Cycle
-    for (i = 0; i < 5; i++) {
-        if (vali[i + 1] == valj[i] && vali[i] == valj[i + 1]) {
-            leave = i;
-        }
-    }
-
-    for (i = 0; i < 5; i++) {
-        if (i != leave) {
-            printf("Connecting %d to %d with cost %d\n", vali[i] + 1, valj[i] + 1, val[i]);
-            cost += val[i];
-        }
-    }
-
-    printf("Final cost is %d\n", cost);
+    printf("Total cost : %d",mincost);
 }
